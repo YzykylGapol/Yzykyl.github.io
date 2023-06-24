@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #777;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin: 5px;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+input[type="text"] {
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+#question {
+  display: none;
+  margin-top: 20px;
+}
+
+#reason {
+  margin-top: 10px;
+}
+
+#reason,
+button {
+  display: block;
+  margin: 10px auto;
+}
+
+.sad-page {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.sad-page h1 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.sad-page p {
+  color: #777;
+  font-size: 16px;
+}
+
+.sad-page img {
+  width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+/* Added CSS for the output box */
+.output-box {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.output-box p {
+  margin: 0;
+  font-size: 16px;
+}
+</style>
+</head>
+<body onload="showName()">
+<div class="container">
+  <div id="nameDisplay"></div>
+  <h2>Naa koy pangutana nimo, do you like me?</h2>
+  <div class="button-container">
+    <button onclick="showQuestion()">Yes</button>
+    <button onclick="redirectToSadPage()">No</button>
+  </div>
+  <div id="question">
+    <label for="reason">Why?</label>
+    <input type="text" id="reason" name="reason">
+    <button onclick="sendReason()">Send</button>
+  </div>
+  <!-- Output Box -->
+  <div class="output-box">
+    <p>Waiting...</p>
+  </div>
+</div>
+<script>
+
+function saveName() {
+  var name = document.getElementById("name").value;
+  localStorage.setItem("name", name);
+  alert("Name saved!");
+}
+
+function clearName() {
+  localStorage.removeItem("name");
+  alert("Name cleared!");
+
+}function showName() {
+  var name = localStorage.getItem("name");
+  document.getElementById("nameDisplay").textContent = "Name: " + name;
+}
+
+function showQuestion() {
+  document.getElementById("question").style.display = "block";
+}
+
+function sendReason() {
+  var reason = document.getElementById("reason").value;
+  var name = localStorage.getItem("name");
+  var scriptUrl = "https://script.google.com/macros/s/AKfycbyCb1_JZhCl-Nlk7Qn8GBp8S0sn3VEB0zhQCy_wPNC20WgAmXQcArJLzfXJ5IsGIaK9/exec";
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", scriptUrl, true);
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        document.querySelector(".output-box p").textContent = "Reason sent successfuly cv\!";
+      } else {
+        document.querySelector(".output-box p").textContent = "An error occurred while sending the reason. Please try again.";
+      }
+    }
+  };
+  xhr.send("name=" + encodeURIComponent(name) + "&reason=" + encodeURIComponent(reason));
+}
+
+function redirectToSadPage() {
+  window.location.href = "sad.html";
+}
+
+
+</script>
+</body>
+</html>

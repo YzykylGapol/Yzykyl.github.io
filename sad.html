@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Unrequited Embers</title>
+  <style>
+    body {
+      background-color: #f2f2f2;
+      font-family: Arial, sans-serif;
+    }
+    
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .title {
+      text-align: center;
+      font-size: 28px;
+      color: #333;
+    }
+    
+    .poem {
+      margin-top: 20px;
+      font-size: 18px;
+      line-height: 1.5;
+      color: #666;
+    }
+    
+    .highlight {
+      background-color: yellow;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">Unrequited Embers</h1>
+    <div class="poem">
+      <p>In the realm of heartfelt tales, let me share</p>
+      <p>A poem born from longing, a tale of love's affair</p>
+      <p>For in the chambers of my soul, a fragile heart does dwell</p>
+      <p>A story of rejection, a tale I must now tell.</p>
+      <p>"Unrequited Embers," the title declares</p>
+      <p>A bittersweet symphony of unspoken prayers</p>
+      <p>Where love's flame flickered, but failed to ignite</p>
+      <p>Leaving me entangled in the depths of night.</p>
+      <p>Once, I dared to dream of a love so pure and true</p>
+      <p>With hope in my eyes, I reached out for you</p>
+      <p>Like a wayward star, you captured my gaze</p>
+      <p>A beacon of light, guiding me through life's maze.</p>
+      <p>But alas, my love, it seems fate had its way</p>
+      <p>For the embers of affection were not meant to stay</p>
+      <p>In the shadows of uncertainty, my heart grew weak</p>
+      <p>As I braced myself for the words I longed not to speak.</p>
+      <p>"Unrequited Embers," a painful refrain</p>
+      <p>Echoing through the chambers of my soul's domain</p>
+      <p>With trembling voice and bated breath, I poured my heart</p>
+      <p>Yet your eyes spoke of a truth that tore me apart.</p>
+      <p>The words that followed cut through like a knife</p>
+      <p>And the bitter taste of rejection clouded my life</p>
+      <p>But in the depths of despair, I found strength anew</p>
+      <p>For love's rejection is but a chapter, not the whole view.</p>
+      <p>For I am more than unrequited affection's sting</p>
+      <p>I'll rise from the ashes, spread my broken wings</p>
+      <p>I'll find solace in the whispers of the gentle breeze</p>
+      <p>And seek solace in the moon's silver rays that appease.</p>
+      <p>"Unrequited Embers," a testament to endure</p>
+      <p>A tale of resilience, of a heart that remains pure</p>
+      <p>Though scars may linger, love's flame will still ignite</p>
+      <p>In the darkest nights, stars reclaim their light.</p>
+      <p>Cherishing the memories, the moments we once shared</p>
+      <p>"Unrequited Embers" cannot define how much I've dared</p>
+      <p>So, I'll stand tall, embracing life's winding road</p>
+      <p>For love's rejection is but a moment, a tale bestowed.</p>
+      <p>In the tapestry of life, this chapter will unfold</p>
+      <p>And in the beauty of resilience, a new story will be told</p>
+      <p>"Unrequited Embers" shall illuminate my way</p>
+      <p>As I walk with grace, into a brighter day.</p>
+      <p>For love's rejection is just a stumble, not my final fall</p>
+      <p>With steadfast hope, I'll rise above it all</p>
+      <p>"Unrequited Embers" shall flicker, then fade away</p>
+      <p>As I embrace the love that awaits another day.</p>
+    </div>
+  </div>
+
+  <script>
+    function highlightKeywords() {
+      var poem = document.querySelector('.poem');
+      var keywords = ['love', 'rejection', 'embers'];
+
+      keywords.forEach(function(keyword) {
+        var regex = new RegExp('\\b' + keyword + '\\b', 'gi');
+        poem.innerHTML = poem.innerHTML.replace(regex, '<span class="highlight">' + keyword + '</span>');
+      });
+    }
+
+    function resizeTitle() {
+      var title = document.querySelector('.title');
+      var windowWidth = window.innerWidth;
+      var fontSize = windowWidth / 30; // Adjust the value as needed
+
+      title.style.fontSize = fontSize + 'px';
+    }
+
+    highlightKeywords();
+    resizeTitle();
+
+    window.addEventListener('resize', resizeTitle);
+  </script>
+</body>
+</html>
